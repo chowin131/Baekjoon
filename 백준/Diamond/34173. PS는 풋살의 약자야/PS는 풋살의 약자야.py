@@ -17,13 +17,7 @@ def solve():
             results.append("-1")
             continue
         k=math.sqrt(v*v-1)
-        A1=0.0
-        dtheta=math.pi/10000
-        for i in range(10000):
-            theta=-math.pi/2+(i+0.5)*dtheta
-            ct=math.cos(theta)
-            r=d*(-ct+math.sqrt(ct*ct+k*k))/(k*k)
-            A1+=r*r*dtheta/2.0
+        A1=d*d/(2*k**4)*(v*v*(math.pi-2*math.asin(1.0/v))-2*k)
         A2=d*d/(2*k)*(math.exp(math.pi/k)-1)
         results.append(f"{A1+A2:.8f}")
     print('\n'.join(results))
