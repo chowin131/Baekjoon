@@ -4,7 +4,6 @@ using p=pair<int,int>;
 #define f first
 #define s second
 #define int long long
-#define double long double
 const int INF=INT64_MAX;
 
 main(){
