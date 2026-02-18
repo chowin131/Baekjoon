@@ -9,8 +9,7 @@ int ccw(pt a,pt b,pt c){
 int main(){
     ios::sync_with_stdio(0),cin.tie(0),cout.tie(0);
     int n;
-    while(cin>>n){
-        if(n==0) break;
+    while(cin>>n&&n){
         vector<pt> P(n);
         for(int i=0;i<n;i++){
             cin>>P[i].x>>P[i].y;
