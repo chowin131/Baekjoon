@@ -1,2 +1,2 @@
 #include<bits/stdc++.h>
-using namespace std;int t,n,q,i,l,r,x;main(){cin.tie(0)->sync_with_stdio(0);for(cin>>t;t--;){cin>>n>>q;vector<int>v(n+1),N=v,L=v;for(i=1;i<=n;i++){cin>>v[i];for(x=1;x*2<=v[i];x*=2,N[i]++);N[i]+=N[i-1]+(x+1<v[i]),L[i]=L[i-1]+(x+1==v[i]);}while(q--)cin>>l>>r,cout<<N[r]-N[l-1]+(L[r]-L[l-1])/2<<"\n";}}
+using namespace std;main(){cin.tie(0)->sync_with_stdio(0);int t,n,q,i,G,r,v;for(cin>>t;t--;){cin>>n>>q;vector<int>N(n+1),L=N;for(i=0;i<n;i++)cin>>v,G=__lg(--v),G+=(G==0||G!=log2(v)),L[i+1]=(1<<G==v)+L[i],N[i+1]=G+N[i];while(q--)cin>>G>>r,cout<<N[r]-N[G-1]+(L[r]-L[G-1])/2<<"\n";}}
