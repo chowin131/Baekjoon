@@ -37,7 +37,7 @@ int main() {
         if (child.size()==0) continue;
         else if (child.size()==1) {
             int prev=tar;
-            for (int i=0;i<10;i++) {
+            for (int i=0;i<11;i++) {
                 new_T[prev].push_back(++val);
                 prev=val;
             }
@@ -48,7 +48,7 @@ int main() {
             int k=child.size();
             int h=0;
             while ((1<<h)<k) h++;
-            int pad=10-h;
+            int pad=11-h;
             int prev=tar;
             for (int i=0;i<pad;i++) {
                 new_T[prev].push_back(++val);
