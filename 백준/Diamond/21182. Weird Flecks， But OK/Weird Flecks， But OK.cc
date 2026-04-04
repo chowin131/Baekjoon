@@ -1,9 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <cmath>
-#include <algorithm>
-#include <random>
-#include <chrono>
+#include <bits/stdc++.h>
 using namespace std;
 #define eps 1e-9
 struct pt3d{
