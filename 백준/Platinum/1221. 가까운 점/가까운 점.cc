@@ -1,19 +1,8 @@
 #include <bits/stdc++.h>
 #define int long long
 using namespace std;
-struct pt{
-    int x,y,z;
-    bool operator<(const pt&o)const{
-        if(x!=o.x) return x<o.x;
-        if(y!=o.y) return y<o.y;
-        return z<o.z;
-    }
-    bool operator==(const pt&o)const{
-        return x==o.x&&y==o.y&&z==o.z;
-    }
-};
+struct pt{int x,y,z;};
 vector<pt> a;
-vector<int> v;
 int best,cnt;
 
 void upd(int i,int j){
@@ -31,8 +20,7 @@ void solve(int l,int r){
     int mx=a[m].x;
     solve(l,m);
     solve(m,r);
-    v.clear();
-    v.reserve(r-l);
+    vector<int> v;
     for(int i=l;i<r;i++){
         int dx=a[i].x-mx;
         if(dx*dx<=best) v.push_back(i);
@@ -53,9 +41,16 @@ signed main(){
     cin>>n;
     a.resize(n);
     for(int i=0;i<n;i++) cin>>a[i].x>>a[i].y>>a[i].z;
-    sort(a.begin(),a.end());
-    a.erase(unique(a.begin(),a.end()),a.end());
-    n=a.size(),best=INT64_MAX,cnt=0;
+    sort(a.begin(),a.end(),[](pt&p,pt&q){
+        if(p.x!=q.x) return p.x<q.x;
+        if(p.y!=q.y) return p.y<q.y;
+        return p.z<q.z;
+    });
+    a.erase(unique(a.begin(),a.end(),[](pt&p,pt&q){
+        return p.x==q.x&&p.y==q.y&&p.z==q.z;
+    }),a.end());
+    n=a.size();
+    best=INT64_MAX; cnt=0;
     solve(0,n);
     cout<<best<<"\n"<<cnt;
 }
