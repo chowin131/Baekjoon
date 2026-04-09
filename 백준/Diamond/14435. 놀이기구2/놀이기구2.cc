@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long
-
-const int MAXN=200005;
+#define MAXN 200005
 int n,m,k_days,q;
 int lim[MAXN],kid[MAXN];
 int qi[MAXN],qj[MAXN],qk[MAXN];
@@ -12,7 +10,7 @@ int ans[MAXN],cur=0;
 
 priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>> pq[MAXN];
 
-inline void add(int idx){
+void add(int idx){
     int u=qi[idx],v=qj[idx],L=lim[qk[idx]];
     int half=(L-h[u]-h[v]+1)/2;
     ti[idx]=h[u]+half;
