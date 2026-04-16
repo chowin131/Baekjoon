@@ -62,5 +62,5 @@ signed main(){
         mcmf.add(n+i,j,C[i][j],d);
     }
     auto [flow,cost]=mcmf.run(S,T);
-    cout<<flow<<'\n'<<cost;
+    cout<<flow<<'\n'<<cost<<'\n';
 }
