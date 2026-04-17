@@ -1,13 +1,20 @@
 extern printf
 section .data
     msg db "Hello World!", 0xa, 0
+
 section .text
     global main
+
 main:
-    sub rsp, 8
-    lea rdi, [rel msg]
-    xor rax, rax
-    call printf
-    add rsp, 8
-    xor rax, rax
+    ; 1. printf에 전달할 인자를 스택에 푸시 (오른쪽에서 왼쪽 순서)
+    push msg        
+    
+    ; 2. printf 함수 호출
+    call printf     
+    
+    ; 3. 함수 호출이 끝난 후, 스택에 넣었던 인자(4바이트 포인터) 공간을 정리
+    add esp, 4      
+    
+    ; 4. main 함수의 정상 종료(return 0)를 위해 eax를 0으로 초기화
+    xor eax, eax    
     ret
