@@ -69,7 +69,7 @@ int qsum(int nd,int l,int r,int ql,int qr){
 	int mid=(l+r)/2;
 	return qsum(nd*2,l,mid,ql,qr)+qsum(nd*2+1,mid+1,r,ql,qr);
 }
-signed main(){
+main(){
 	cin.tie(0)->sync_with_stdio(0);
 	cin>>n;
 	for(int i=1;i<=n;i++)cin>>a[i];
