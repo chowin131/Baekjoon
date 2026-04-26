@@ -32,8 +32,9 @@ int cnt=0;
 for(int i=1;i<=k;i++) if(c_L[i]) cnt+=sf_R[i];
 return cnt;
 }
-main(){
+signed main(){
 cin.tie(0)->sync_with_stdio(0);
+cout.tie(0);
 cin>>n>>m;
 vector<string> a(n),b(m,string(n,' '));
 for(auto&i:a) cin>>i;
