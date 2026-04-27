@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int t[3000001];
+int t[4000001];
 void u(int n,int s,int e,int idx,int v){
     if(idx<s||idx>e)return;
     t[n]+=v;
