@@ -1,41 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define int long long
-#define double long double
-#define f first
-#define s second
-using p=pair<int,int>;
-int n;
-vector<p> adj[100005];
-int mx,mx_idx;
-void dfs(int cur,int p,int d){
-	if(d>mx){
-		mx=d;
-		mx_idx=cur;
-	}
-	for(auto nxt:adj[cur]){
-		if(nxt.f!=p)dfs(nxt.f,cur,d+nxt.s);
-	}
+vector<vector<pair<int,int>>> G(100000);
+pair<int,int> dfs(int cur,int par,int tar_cost,int cost){
+    int temp=cost;
+    for(auto next:G[cur]){
+        if(next.first==par) continue;
+        auto [f,s]=dfs(next.first,cur,tar_cost,temp+next.second);
+        if(s!=-1) return {f,s};
+        cost=max(cost,f);
+    }
+    if(cost==tar_cost) return {cost,cur};
+    return {cost,-1};
 }
-signed main(){
-	cin.tie(0)->sync_with_stdio(0);
-	cin>>n;
-	for(int i=0;i<n;i++){
-		int u;
-		cin>>u;
-		while(1){
-			int v;
-			cin>>v;
-			if(v==-1)break;
-			int w;
-			cin>>w;
-			adj[u].push_back({v,w});
-		}
-	}
-	mx=0;
-	mx_idx=1;
-	dfs(1,0,0);
-	mx=0;
-	dfs(mx_idx,0,0);
-	cout<<mx;
+int main(){
+    cin.tie(0)->sync_with_stdio(0);
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        int u,v,c;
+        cin>>u>>v;
+        while(v!=-1){
+            cin>>c;
+            G[u-1].push_back({v-1,c});
+            cin>>v;
+        }
+        // for(auto j:G[i])cout<<j.first<<" "<<j.second<<" ";
+        // cout<<"\n";
+    }
+    cout<<dfs(dfs(0,-1,dfs(0,-1,-1,0).first,0).second,-1,-1,0).first;
 }
